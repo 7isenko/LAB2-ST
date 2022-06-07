@@ -5,13 +5,13 @@ import com.opencsv.bean.CsvBindByPosition;
 /**
  * @author 7isenko
  */
-public class CSVDoublePair {
+public class DoublePairCSVBean {
     @CsvBindByPosition(position = 0)
     private final double left;
     @CsvBindByPosition(position = 1)
     private final double right;
 
-    public CSVDoublePair(double left, double right) {
+    public DoublePairCSVBean(double left, double right) {
         this.left = left;
         this.right = right;
     }

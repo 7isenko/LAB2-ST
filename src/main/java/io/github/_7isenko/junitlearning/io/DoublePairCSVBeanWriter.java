@@ -3,7 +3,6 @@ package io.github._7isenko.junitlearning.io;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
-import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvFieldAssignmentException;
 
 import java.io.FileWriter;
@@ -13,22 +12,22 @@ import java.io.Writer;
 /**
  * @author 7isenko
  */
-public class CSVDoublePairWriter {
-    private StatefulBeanToCsv<CSVDoublePair> sbc;
+public class DoublePairCSVBeanWriter {
+    private StatefulBeanToCsv<DoublePairCSVBean> sbc;
     private Writer writer;
 
-    public CSVDoublePairWriter() {
+    public DoublePairCSVBeanWriter() {
     }
 
     public void open(String path) throws IOException {
         if (writer != null) writer.close();
         writer = new FileWriter(path);
-        sbc = new StatefulBeanToCsvBuilder<CSVDoublePair>(writer)
+        sbc = new StatefulBeanToCsvBuilder<DoublePairCSVBean>(writer)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                 .build();
     }
 
-    public void write(CSVDoublePair pair) throws IOException {
+    public void write(DoublePairCSVBean pair) throws IOException {
         try {
             sbc.write(pair);
         } catch (CsvFieldAssignmentException e) {
