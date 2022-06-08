@@ -1,7 +1,6 @@
 package io.github._7isenko.junitlearning.math;
 
 import io.github._7isenko.junitlearning.utils.MathUtils;
-import io.github._7isenko.junitlearning.utils.PrecisionLoopFunction;
 
 import java.util.function.ToDoubleBiFunction;
 
