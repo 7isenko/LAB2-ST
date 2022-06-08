@@ -5,9 +5,11 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvFieldAssignmentException;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Path;
 
 /**
  * @author 7isenko
@@ -19,11 +21,12 @@ public class DoublePairCSVBeanWriter {
     public DoublePairCSVBeanWriter() {
     }
 
-    public void open(String path) throws IOException {
+    public void open(File file) throws IOException {
         close();
-        writer = new FileWriter(path);
+        writer = new FileWriter(file);
         sbc = new StatefulBeanToCsvBuilder<DoublePairCSVBean>(writer)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
                 .build();
     }
 
