@@ -1,4 +1,4 @@
-package io.github._7isenko.junitlearning;
+package io.github._7isenko.junitlearning.math;
 
 import java.util.function.DoubleFunction;
 
