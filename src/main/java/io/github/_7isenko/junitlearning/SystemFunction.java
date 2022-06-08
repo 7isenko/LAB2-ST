@@ -13,8 +13,25 @@ public class SystemFunction implements DoubleFunction<Double> {
 
     private final double precision;
 
-    public SystemFunction(double precision) {
+    private final DoubleFunction<Double> sinFunction;
+    private final DoubleFunction<Double> lnFunction;
+
+    private final DoubleFunction<Double> log2Function;
+    private final DoubleFunction<Double> log3Function;
+    private final DoubleFunction<Double> log10Function;
+
+    public SystemFunction(double precision,
+                          DoubleFunction<Double> sinFunction,
+                          DoubleFunction<Double> lnFunction,
+                          DoubleFunction<Double> log2Function,
+                          DoubleFunction<Double> log3Function,
+                          DoubleFunction<Double> log10Function) {
         this.precision = precision;
+        this.sinFunction = sinFunction;
+        this.lnFunction = lnFunction;
+        this.log2Function = log2Function;
+        this.log3Function = log3Function;
+        this.log10Function = log10Function;
     }
 
     @Override
@@ -24,7 +41,7 @@ public class SystemFunction implements DoubleFunction<Double> {
         }
 
         if (value <= 0) {
-            double sin = new SinusFunction(precision).apply(value);
+            double sin = sinFunction.apply(value);
 
             double cos = Math.sqrt(1 - sin * sin);
             double tan = sin / cos;
@@ -33,11 +50,11 @@ public class SystemFunction implements DoubleFunction<Double> {
 
             return (sec * sin * cos - sin * csc) / tan;
         } else {
-            double ln = new NaturalLogarithmFunction(precision).apply(value);
+            double ln = lnFunction.apply(value);
 
-            double log2 = new LogarithmFunction(2, precision).apply(value);
-            double log3 = new LogarithmFunction(3, precision).apply(value);
-            double log10 = new LogarithmFunction(10, precision).apply(value);
+            double log2 = log2Function.apply(value);
+            double log3 = log3Function.apply(value);
+            double log10 = log10Function.apply(value);
 
             return (log2 * log10 * log3 - log3 * ln) / log3;
         }
