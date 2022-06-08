@@ -33,8 +33,8 @@ public class NaturalLogarithmFunctionTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/math/ln_good.csv")
-    void lnOfValidValuesReturnsExpectedResults(double x) {
-        Assertions.assertEquals(Math.log(x), logarithmFunction.apply(x), (x < 1 ? PRECISION * 10 : PRECISION));
+    void lnOfValidValuesReturnsExpectedResults(double x, double expected) {
+        Assertions.assertEquals(expected, logarithmFunction.apply(x), (x < 1 ? PRECISION * 10 : PRECISION));
     }
 
     @ParameterizedTest
