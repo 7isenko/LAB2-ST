@@ -20,7 +20,7 @@ public class DoublePairCSVBeanWriter {
     }
 
     public void open(String path) throws IOException {
-        if (writer != null) writer.close();
+        close();
         writer = new FileWriter(path);
         sbc = new StatefulBeanToCsvBuilder<DoublePairCSVBean>(writer)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
@@ -36,7 +36,9 @@ public class DoublePairCSVBeanWriter {
     }
 
     public void close() throws IOException {
-        writer.close();
-        writer = null;
+        if (writer != null) {
+            writer.close();
+            writer = null;
+        }
     }
 }
