@@ -8,7 +8,7 @@ import java.util.function.ToDoubleBiFunction;
  */
 public abstract class PrecisionLoopFunction implements DoubleFunction<Double> {
 
-    private final static int MAX_ITERATIONS = 512;
+    public final static int MAX_ITERATIONS = 512;
 
     private final double precision;
 
