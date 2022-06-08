@@ -1,17 +1,11 @@
 package io.github._7isenko.junitlearning;
 
-import io.github._7isenko.junitlearning.math.LogarithmFunction;
-import io.github._7isenko.junitlearning.math.NaturalLogarithmFunction;
-import io.github._7isenko.junitlearning.math.SinusFunction;
-
 import java.util.function.DoubleFunction;
 
 /**
  * @author 7isenko
  */
 public class SystemFunction implements DoubleFunction<Double> {
-
-    private final double precision;
 
     private final DoubleFunction<Double> sinFunction;
     private final DoubleFunction<Double> lnFunction;
@@ -20,13 +14,11 @@ public class SystemFunction implements DoubleFunction<Double> {
     private final DoubleFunction<Double> log3Function;
     private final DoubleFunction<Double> log10Function;
 
-    public SystemFunction(double precision,
-                          DoubleFunction<Double> sinFunction,
+    public SystemFunction(DoubleFunction<Double> sinFunction,
                           DoubleFunction<Double> lnFunction,
                           DoubleFunction<Double> log2Function,
                           DoubleFunction<Double> log3Function,
                           DoubleFunction<Double> log10Function) {
-        this.precision = precision;
         this.sinFunction = sinFunction;
         this.lnFunction = lnFunction;
         this.log2Function = log2Function;
