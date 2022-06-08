@@ -12,6 +12,7 @@ public class LogarithmFunction implements DoubleFunction<Double> {
 
     private final double precision;
     private final double precalculatedBase;
+    private final DoubleFunction<Double> naturalLogarithmFunction;
 
     static {
         BASES = new HashMap<>();
@@ -20,14 +21,14 @@ public class LogarithmFunction implements DoubleFunction<Double> {
         BASES.put(10, 2.30258509299);
     }
 
-    public LogarithmFunction(int base, double precision) {
+    public LogarithmFunction(int base, double precision, DoubleFunction<Double> naturalLogarithmFunction) {
         this.precision = precision;
         this.precalculatedBase = BASES.get(base);
+        this.naturalLogarithmFunction = naturalLogarithmFunction;
     }
 
     @Override
     public Double apply(double value) {
-        NaturalLogarithmFunction naturalLogarithmFunction = new NaturalLogarithmFunction(precision);
         return naturalLogarithmFunction.apply(value) / precalculatedBase;
     }
 
