@@ -1,4 +1,4 @@
-package io.github._7isenko.junitlearning.utils;
+package io.github._7isenko.junitlearning.math;
 
 import java.util.function.DoubleFunction;
 import java.util.function.ToDoubleBiFunction;
@@ -42,15 +42,11 @@ public abstract class PrecisionLoopFunction implements DoubleFunction<Double> {
     }
 
     private double calcFirstElement(double x) {
-        try {
-            double res = getFunction().applyAsDouble(x, 0);
-            if (Double.isNaN(res) || Double.isInfinite(res)) {
-                return 0;
-            }
-            return res;
-        } catch (Exception e) {
+        double res = getFunction().applyAsDouble(x, 0);
+        if (Double.isNaN(res) || Double.isInfinite(res)) {
             return 0;
         }
+        return res;
     }
 
 }
