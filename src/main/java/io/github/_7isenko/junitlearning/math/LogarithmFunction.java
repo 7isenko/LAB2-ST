@@ -20,7 +20,7 @@ public class LogarithmFunction implements DoubleFunction<Double> {
         BASES.put(10, 2.30258509299);
     }
 
-    public LogarithmFunction(double precision, int base) {
+    public LogarithmFunction(int base, double precision) {
         this.precision = precision;
         this.precalculatedBase = BASES.get(base);
     }

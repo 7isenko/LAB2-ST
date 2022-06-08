@@ -10,9 +10,9 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 public class LogarithmFunctionTest {
     private static final double PRECISION = 0.001;
 
-    private final LogarithmFunction log2 = new LogarithmFunction(PRECISION, 2);
-    private final LogarithmFunction log3 = new LogarithmFunction(PRECISION, 3);
-    private final LogarithmFunction log10 = new LogarithmFunction(PRECISION, 10);
+    private final LogarithmFunction log2 = new LogarithmFunction(2, PRECISION);
+    private final LogarithmFunction log3 = new LogarithmFunction(3, PRECISION);
+    private final LogarithmFunction log10 = new LogarithmFunction(10, PRECISION);
 
     @ParameterizedTest
     @CsvFileSource(resources = "/math/log2_good.csv")
