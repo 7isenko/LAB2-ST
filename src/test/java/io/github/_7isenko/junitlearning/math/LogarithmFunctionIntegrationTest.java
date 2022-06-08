@@ -40,7 +40,7 @@ public class LogarithmFunctionIntegrationTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/math/log2_low_precision.csv")
     void log2OfValidBoundaryValuesReturnsExpectedResultsWithLowerPrecision(double x, double expected) {
-        Assertions.assertEquals(expected, log2Spy.apply(x), PRECISION * 100);
+        Assertions.assertEquals(expected, log2Spy.apply(x), PRECISION * 10);
         Mockito.verify(log2Spy).apply(x);
         Mockito.verify(lnSpy).apply(x);
     }
