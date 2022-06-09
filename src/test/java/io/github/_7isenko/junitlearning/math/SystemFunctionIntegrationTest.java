@@ -61,7 +61,7 @@ public class SystemFunctionIntegrationTest {
         Assertions.assertEquals(calcReferenceValue(x), systemFunctionSpy.apply(x), PRECISION * 2);
     }
 
-    private double calcReferenceValue(double value) {
+    public static double calcReferenceValue(double value) {
         if (value <= 0) {
             double sin = Math.sin(value);
             double cos = Math.cos(value);
