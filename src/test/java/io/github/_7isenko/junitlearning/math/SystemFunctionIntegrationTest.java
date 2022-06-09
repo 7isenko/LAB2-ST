@@ -35,7 +35,7 @@ public class SystemFunctionIntegrationTest {
 
     @ParameterizedTest
     @ValueSource(doubles = {-1, 0})
-    void onNotPositiveValuesShouldBeExecutedSin(double x) {
+    void onNotPositiveValuesSinShouldBeExecuted(double x) {
         systemFunctionSpy.apply(x);
         Mockito.verify(sinFunctionSpy).apply(x);
         Mockito.verify(lnFunctionSpy, Mockito.never()).apply(x);
@@ -46,7 +46,7 @@ public class SystemFunctionIntegrationTest {
 
     @ParameterizedTest
     @ValueSource(doubles = {0.1, 1, 2})
-    void onPositiveValuesShouldBeExecutedLog(double x) {
+    void onPositiveValuesLogShouldBeExecuted(double x) {
         systemFunctionSpy.apply(x);
         Mockito.verify(sinFunctionSpy, Mockito.never()).apply(x);
         Mockito.verify(lnFunctionSpy, Mockito.times(4)).apply(x);
