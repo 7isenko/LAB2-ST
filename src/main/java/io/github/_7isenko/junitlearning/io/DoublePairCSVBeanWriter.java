@@ -14,7 +14,7 @@ import java.io.Writer;
  * @author 7isenko
  */
 public class DoublePairCSVBeanWriter {
-    private StatefulBeanToCsv<DoublePairCSVBean> sbc;
+    private StatefulBeanToCsv<DoublePairCSVBean> beanToCsvWriter;
     private Writer writer;
 
     public DoublePairCSVBeanWriter() {
@@ -23,15 +23,12 @@ public class DoublePairCSVBeanWriter {
     public void open(File file) throws IOException {
         close();
         writer = new FileWriter(file);
-        sbc = new StatefulBeanToCsvBuilder<DoublePairCSVBean>(writer)
-                .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-                .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-                .build();
+        beanToCsvWriter = buildBeanWriter(writer);
     }
 
     public void write(DoublePairCSVBean pair) throws IOException {
         try {
-            sbc.write(pair);
+            beanToCsvWriter.write(pair);
         } catch (CsvException e) {
             throw new IOException("Exception during csv field assignment: " + e.getMessage());
         }
@@ -43,4 +40,12 @@ public class DoublePairCSVBeanWriter {
             writer = null;
         }
     }
+
+    protected StatefulBeanToCsv<DoublePairCSVBean> buildBeanWriter(Writer writer) {
+        return new StatefulBeanToCsvBuilder<DoublePairCSVBean>(writer)
+                .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+                .build();
+    }
+
 }
