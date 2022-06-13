@@ -1,7 +1,7 @@
 package io.github._7isenko.junitlearning;
 
 import io.github._7isenko.junitlearning.math.SystemFunction;
-import io.github._7isenko.junitlearning.math.SystemFunctionIntegrationTest;
+import io.github._7isenko.junitlearning.math.SystemFunctionSpyTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ public class SystemSolvingWriterTest {
     void setupSystemFunction() {
         SystemFunction mockSystemFunction = Mockito.mock(SystemFunction.class);
         Mockito.when(mockSystemFunction.apply(Mockito.anyDouble()))
-                .thenAnswer((invocationOnMock -> SystemFunctionIntegrationTest.calcReferenceValue(invocationOnMock.getArgument(0))));
+                .thenAnswer((invocationOnMock -> SystemFunctionSpyTest.calcReferenceValue(invocationOnMock.getArgument(0))));
         testPath = testDirectory.resolve("test.csv");
         writer = new SystemSolvingWriter(mockSystemFunction, testPath.toString());
     }

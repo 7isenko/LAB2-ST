@@ -11,7 +11,7 @@ import java.util.function.DoubleFunction;
 /**
  * @author 7isenko
  */
-public class SystemFunctionIntegrationTest {
+public class SystemFunctionSpyTest {
 
     private static final double PRECISION = 0.001;
     private SystemFunction systemFunctionSpy;

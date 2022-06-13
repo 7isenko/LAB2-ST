@@ -10,7 +10,7 @@ import org.mockito.Mockito;
  */
 public class PrecisionLoopFunctionTest {
 
-    PrecisionLoopFunction mockPrecisionLoopFunction;
+    private PrecisionLoopFunction mockPrecisionLoopFunction;
 
     @BeforeEach
     void setupPrecisionLoopFunction() {
