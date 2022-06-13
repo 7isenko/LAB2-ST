@@ -1,17 +1,15 @@
 package io.github._7isenko.junitlearning.math;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 /**
  * @author 7isenko
  */
-public class LogarithmFunctionIntegrationTest {
+public class LogarithmFunctionIntegrationSpyTest {
     private static final double PRECISION = 0.001;
 
     private NaturalLogarithmFunction lnSpy;
